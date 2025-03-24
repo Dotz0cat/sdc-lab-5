@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new Buttons</title>
+</head>
+<body>
+
+    <div>
+        <h1>Enter user information</h1>
+        <!--/*@thymesVar id="user" type="UserInfo"*/-->
+        <form th:action="@{/user}" th:object="${user}" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" th:field="{username}"/>
+
+            <label for="radioButton">Select one</label>
+            <input type="radio" id="radioButton" name="radioButton" th:field="{selectedButton}"/>
+
+            <button type="submit">Submit</button>
+        </form>>
+    </div>
+
+</body>
+</html>

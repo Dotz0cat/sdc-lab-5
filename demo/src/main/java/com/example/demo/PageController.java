@@ -1,11 +1,9 @@
 package com.example.demo;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PageController {
@@ -25,5 +23,17 @@ public class PageController {
     public String buttonsPost(Model model, @RequestParam("value") String valueFromController) {
         model.addAttribute("valueFromController", valueFromController);
         return "buttons";
+    }
+
+    @GetMapping("/new_buttons")
+    public String newButtons(Model model) {
+        model.addAttribute("user", new UserInfo());
+        return "new_buttons";
+    }
+
+    @PostMapping("/user")
+    public String userPost(@ModelAttribute("user") UserInfo user, Model model) {
+        model.addAttribute("user", user);
+        return "user_result";
     }
 }
